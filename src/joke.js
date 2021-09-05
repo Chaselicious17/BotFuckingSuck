@@ -1,4 +1,3 @@
-
 const axios = require('axios');
 
 function getJokes(message) {
@@ -18,7 +17,7 @@ function getJokes(message) {
             message.reply(jokeData.joke);
         });
 }
-// Test Comment
+
 module.exports = {
     sendJoke: function (message) {
         getJokes(message);
