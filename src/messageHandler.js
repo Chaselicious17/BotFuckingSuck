@@ -9,15 +9,14 @@ module.exports = {
     },
     handleChat: function(message){
         if(message.author.bot) return;
+
         logChat(message);
-        // return if message doesn't start with 
+        
         if (!hasActivationToken(message.content)) {
             return;
-        } else {
+        } 
 
-        }
         routeChat(message);
-        return;
     }
 }
 
@@ -26,13 +25,15 @@ function hasActivationToken(messageContent){
     try 
     {
         // If first character is the bot command character
-        if (messageContent.charAt(0) === constants["ActivationToken"]) 
+        if (messageContent.charAt(0) === constants["ActivationToken"]) {
             return true;
+        }
     } 
     catch (exception) 
     {
         logError(exception.message);
         return false;    
     }
+
     return false;
 }

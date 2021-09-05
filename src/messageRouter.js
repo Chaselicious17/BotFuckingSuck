@@ -1,5 +1,6 @@
 const { logDebug, logInfo, logError } = require('./utility/logger.js');
 const { sendJoke } = require("./joke.js");
+const { checkHealth } = require("./healthCheck.js");
 
 module.exports = {
     routeChat: function(message){       
@@ -7,6 +8,10 @@ module.exports = {
             case "joke":
                 logDebug(`Command: joke was picked up`);
                 sendJoke(message);
+                break;
+            case "status":
+                logDebug(`Command: status was picked up`);
+                checkHealth(message);
                 break;
             default:
                 logInfo(`The provided command is not a recognized command`);
