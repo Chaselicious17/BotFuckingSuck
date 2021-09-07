@@ -12,9 +12,7 @@ module.exports = {
 
         logChat(message);
         
-        if (!hasActivationToken(message.content)){
-            return;
-        } 
+        if (!hasActivationToken(message.content)) return;
 
         routeChat(message);
     }

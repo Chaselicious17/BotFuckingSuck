@@ -4,35 +4,36 @@ module.exports = {
     getStats: function (message, username) {
         axios.get(`https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${username.toLowerCase()}`)
             .then(function (response) {
-                let highscoreData = mapHighscoreData(response.data);                
-                let reply = '';
+                let highscoreData = mapHighscoreData(response.data);
 
-                for (i = 0; i < highscoreData.length; i++) {
-                    let rankLvlExp = highscoreData[categories[i]];
-                    let category = categories[i];
-                    reply += `${category}: { rank: ${rankLvlExp.rank}, level: ${rankLvlExp.level}, experience: ${rankLvlExp.experience} }\n`;
-                }
-                console.log(reply);
+                let reply = '```';
+                reply += `Stats for: ${username} <a:200iq:688355903807684625>\n`;
+                reply += `Attack: ${highscoreData.Attack.level}       Hitpoints: ${highscoreData.Hitpoints.level}      Mining: ${highscoreData.Mining.level}\n`;                
+                reply += `Strength: ${highscoreData.Strength.level}       Agility: ${highscoreData.Agility.level}      Smithing: ${highscoreData.Smithing.level}\n`;
+                reply += `Defence: ${highscoreData.Defence.level}       Herblore: ${highscoreData.Herblore.level}      Fishing: ${highscoreData.Fishing.level}\n`;
+                reply += `Ranged: ${highscoreData.Ranged.level}       Thieving: ${highscoreData.Thieving.level}      Cooking: ${highscoreData.Cooking.level}\n`;
+                reply += `Prayer: ${highscoreData.Prayer.level}       Crafting: ${highscoreData.Crafting.level}      Firemaking: ${highscoreData.Firemaking.level}\n`;
+                reply += `Magic: ${highscoreData.Magic.level}       Fletching: ${highscoreData.Fletching.level}      Woodcutting: ${highscoreData.Woodcutting.level}\n`;
+                reply += `Runecrafting: ${highscoreData.Runecrafting.level}       Slayer: ${highscoreData.Slayer.level}      Farming: ${highscoreData.Farming.level}\n`;
+                reply += `Construction: ${highscoreData.Construction.level}       Hunter: ${highscoreData.Hunter.level}      Total: ${highscoreData.Overall.level}\n`;
+                reply += '```';
+
+                message.channel.send(reply);
             })
-            .catch(function (error) {
+            .catch(function (error){
                 // handle error
-                console.log(error);
+                message.channel.send(`User: ${username} not found`);
             });
     }
 };
 
-function mapHighscoreData(hsData) {
+function mapHighscoreData(hsData){
 
-    //rank, level, experience
     hsData = hsData.split('\n');
 
-    let rawStats = new Array(hsData.length);
+    let categoryStats = new Array(hsData.length);
     for (i = 0; i < hsData.length; i++) {
-        rawStats[i] = hsData[i];
-    }
-    let categoryStats = new Array(rawStats.length);
-    for (i = 0; i < rawStats.length; i++) {
-        let rankLvlExp = rawStats[i].split(',');
+        let rankLvlExp = hsData[i].split(',');
 
         categoryStats[categories[i]] = {
             rank: rankLvlExp[0],
