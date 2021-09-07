@@ -7,18 +7,18 @@ const { getStats } = require('./osrs.js');
 module.exports = {
     routeChat: function(message){       
         switch (getCommand(message.content)){
-            case 'joke':
-                logDebug('Command: joke was picked up');
-                sendJoke(message);
-                break;
-            case 'status':
-                logDebug('Command: status was picked up');
-                checkHealth(message);
-                break;
-            case 'dinner':
-                logDebug('Command: dinner was picked up');
-                getDinner(message);
-                break;
+            // case 'joke':
+            //     logDebug('Command: joke was picked up');
+            //     sendJoke(message);
+            //     break;
+            // case 'status':
+            //     logDebug('Command: status was picked up');
+            //     checkHealth(message);
+            //     break;
+            // case 'dinner':
+            //     logDebug('Command: dinner was picked up');
+            //     getDinner(message);
+            //     break;
             case 'osrsstats':
                 logDebug('Command: osrsstats was picked up');
                 let username = message.content.split(' ', 2)[1];
