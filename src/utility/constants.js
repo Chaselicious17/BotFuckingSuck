@@ -1,3 +1,3 @@
-module.exports = {
-    "ActivationToken": '!'
-}
+module.exports = Object.freeze({
+    "ActivationToken": "!"
+});

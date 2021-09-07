@@ -1,5 +1,5 @@
 module.exports = {
-    checkHealth: function (message) {
-        message.reply("I am currently running");
+    checkHealth: function (message){
+        message.channel.send('I am currently running');
     }
 }

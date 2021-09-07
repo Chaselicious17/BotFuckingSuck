@@ -1,5 +1,5 @@
-const { logBotReady, logChat } = require("./utility/logger.js");
-const { routeChat } = require("./messageRouter.js");
+const { logBotReady, logChat } = require('./utility/logger.js');
+const { routeChat } = require('./messageRouter.js');
 const constants = require('./utility/constants.js');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 
         logChat(message);
         
-        if (!hasActivationToken(message.content)) {
+        if (!hasActivationToken(message.content)){
             return;
         } 
 
@@ -22,15 +22,12 @@ module.exports = {
 
 // Check if the message contains the bot command character
 function hasActivationToken(messageContent){
-    try 
-    {
+    try{
         // If first character is the bot command character
-        if (messageContent.charAt(0) === constants["ActivationToken"]) {
+        if (messageContent.charAt(0) === constants["ActivationToken"])
             return true;
-        }
-    } 
-    catch (exception) 
-    {
+    }
+    catch (exception){
         logError(exception.message);
         return false;    
     }
