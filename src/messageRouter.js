@@ -3,6 +3,7 @@ const { sendJoke } = require('./joke.js');
 const { checkHealth } = require('./healthCheck.js');
 const { getDinner } = require('./foodPics.js');
 const { getStats } = require('./osrs.js');
+const { getRandom } = require('./rng.js');
 
 module.exports = {
     routeChat: function(message){       
@@ -23,6 +24,11 @@ module.exports = {
                 logDebug('Command: osrsstats was picked up');
                 let username = message.content.split(' ', 2)[1];
                 getStats(message, username);
+                break;
+            case 'roll':
+                logDebug('Command: roll was picked up');
+                let roll = message.content.split(' ', 2)[1];
+                getRandom(message, roll);
                 break;
             default:
                 logInfo('The provided command is not a recognized command');

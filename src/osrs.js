@@ -10,13 +10,13 @@ module.exports = {
 
                 let reply = '>>> ';
                 reply += `Showing stats for: **${username}**\n`;
-                reply += `<:Attack_icon:884978564875817030> ${highscoreData.Attack.level}         <:Hitpoints_icon:884978564905177148> ${highscoreData.Hitpoints.level}        <:Mining_icon:884978564888412160> ${highscoreData.Mining.level}\n`;                
-                reply += `<:Strength_icon:884978564603211817> ${highscoreData.Strength.level}         <:Agility_icon:884978564615782491> ${highscoreData.Agility.level}        <:Smithing_icon:884978564884230164> ${highscoreData.Smithing.level}\n`;
-                reply += `<:Defence_icon:884978564745793558> ${highscoreData.Defence.level}         <:Herblore_icon:884978564737413121> ${highscoreData.Herblore.level}        <:Fishing_icon:884978564909383721> ${highscoreData.Fishing.level}\n`;
-                reply += `<:Ranged_icon:884978564884205648> ${highscoreData.Ranged.level}         <:Thieving_icon:884978564607397970> ${highscoreData.Thieving.level}        <:Cooking_icon:884978564880035850> ${highscoreData.Cooking.level}\n`;
+                reply += `<:Attack_icon:884978564875817030> ${highscoreData.Attack.level}         <:Hitpoints_icon:884978564905177148> ${highscoreData.Hitpoints.level}         <:Mining_icon:884978564888412160> ${highscoreData.Mining.level}\n`;                
+                reply += `<:Strength_icon:884978564603211817> ${highscoreData.Strength.level}         <:Agility_icon:884978564615782491> ${highscoreData.Agility.level}         <:Smithing_icon:884978564884230164> ${highscoreData.Smithing.level}\n`;
+                reply += `<:Defence_icon:884978564745793558> ${highscoreData.Defence.level}         <:Herblore_icon:884978564737413121> ${highscoreData.Herblore.level}         <:Fishing_icon:884978564909383721> ${highscoreData.Fishing.level}\n`;
+                reply += `<:Ranged_icon:884978564884205648> ${highscoreData.Ranged.level}         <:Thieving_icon:884978564607397970> ${highscoreData.Thieving.level}         <:Cooking_icon:884978564880035850> ${highscoreData.Cooking.level}\n`;
                 reply += `<:Prayer_icon:884978564930342962> ${highscoreData.Prayer.level}         <:Crafting_icon:884978564942938142> ${highscoreData.Crafting.level}        <:Firemaking_icon:884978564951318559> ${highscoreData.Firemaking.level}\n`;
-                reply += `<:Magic_icon:884978564573831209> ${highscoreData.Magic.level}         <:Fletching_icon:884978564594819113> ${highscoreData.Fletching.level}        <:Woodcutting_icon:884978565001658408> ${highscoreData.Woodcutting.level}\n`;
-                reply += `<:Runecraft_icon:884978564892614716> ${highscoreData.Runecrafting.level}         <:Slayer_icon:884978564909371392> ${highscoreData.Slayer.level}        <:Farming_icon:884978565010059335> ${highscoreData.Farming.level}\n`;
+                reply += `<:Magic_icon:884978564573831209> ${highscoreData.Magic.level}         <:Fletching_icon:884978564594819113> ${highscoreData.Fletching.level}         <:Woodcutting_icon:884978565001658408> ${highscoreData.Woodcutting.level}\n`;
+                reply += `<:Runecraft_icon:884978564892614716> ${highscoreData.Runecrafting.level}         <:Slayer_icon:884978564909371392> ${highscoreData.Slayer.level}         <:Farming_icon:884978565010059335> ${highscoreData.Farming.level}\n`;
                 reply += `<:Construction_icon:884978564968108072> ${highscoreData.Construction.level}         <:Hunter_icon:884978564993265684> ${highscoreData.Hunter.level}       Total: ${highscoreData.Overall.level}\n`;
                 reply += '';//<:Quest_point_icon:884978564515123263>               
 
@@ -39,12 +39,19 @@ function mapHighscoreData(hsData){
 
         categoryStats[categories[i]] = {
             rank: rankLvlExp[0],
-            level: rankLvlExp[1],
+            level: padLeft(rankLvlExp[1]),
             experience: rankLvlExp[2]
         };
     }
 
     return categoryStats;
+}
+
+function padLeft(num){
+    if (num <= 9){
+        return '0' + num;
+    }
+    return num;
 }
 
 const categories =
