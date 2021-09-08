@@ -1,4 +1,4 @@
-# BotFuckingSuck
+# BotGuy
 
 Installation/Setup:
 1. Run "npm install" on the root directory to resolve packages
