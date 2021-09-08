@@ -11,6 +11,21 @@ module.exports = {
         // dont handle bot messages
         if(message.author.bot) return;
 
+        if(message.author.id === 189955666356600832){ // panker
+            message.reply(`**Oh My Suck!** Sorry, but you sing to much for my functions to work properly. Try not singing for the betterment of the rest of us.`);
+            return;
+        }
+
+        if(message.author.id === 162382220785483776 || message.author.id === 794708380320006226){ // preston (big cock)
+            message.reply(`**Oh My Suck!** Sorry, but you sing to much for my functions to work properly. Try not singing for the betterment of the rest of us.`);
+            return;
+        }
+        
+        if(message.author.id === 353698469682216961){ // grog
+            message.reply(`Wanna play Valorant??? <:grog:871892393312530512><:grog:871892393312530512><:grog:871892393312530512>`);
+            return;
+        }
+        
         logChat(message);
         
         // return if message isn't a command
