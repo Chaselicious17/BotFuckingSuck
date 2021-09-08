@@ -17,7 +17,7 @@ module.exports = {
         }
 
         if(message.author.id === 162382220785483776 || message.author.id === 794708380320006226){ // preston (big cock)
-            message.reply(`**Oh My Suck!** Sorry, but you sing to much for my functions to work properly. Try not singing for the betterment of the rest of us.`);
+            message.reply(`Error: Cock too large`);
             return;
         }
         
