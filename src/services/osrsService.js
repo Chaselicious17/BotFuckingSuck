@@ -1,7 +1,11 @@
 const axios = require('axios');
 
 module.exports = {
-    getStats: function (message, username) {
+    sendStats: function (message) {
+        // Get parameter passed by message
+        let username = message.content.split(' ', 2)[1];
+
+        // if no parameter passed, return
         if (!username) return;
 
         axios.get(`https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${username.toLowerCase()}`)
