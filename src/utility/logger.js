@@ -6,7 +6,7 @@ module.exports = {
     },
     logChat: function(message) {
         var msgDate = new Date(message.createdAt);
-        console.log(`INFO | ${msgDate.toLocaleTimeString()} | Channel: ${message.channel.name} | ${message.author.username}: ${message.content}`);
+        console.log(`INFO | ${msgDate.toLocaleTimeString()} | Guild: ${message.guild.name} | Channel: ${message.channel.name} | ${message.author.username}: ${message.content}`);
         return;
     },
     logInfo: function(message) {

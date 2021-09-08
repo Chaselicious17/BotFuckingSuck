@@ -1,12 +1,18 @@
 const axios = require('axios');
+const { logInfo } = require('../utility/logger.js');
 
 module.exports = {
-    getStats: function (message, username) {
+    sendStats: function (message) {
+        // Get parameter passed by message
+        let username = message.content.split(' ', 2)[1];
+
+        // if no parameter passed, return
         if (!username) return;
 
         axios.get(`https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${username.toLowerCase()}`)
             .then(function (response) {
                 let highscoreData = mapHighscoreData(response.data);
+                logInfo(highscoreData);
 
                 let reply = '>>> ';
                 reply += `Showing stats for: **${username}**\n`;
