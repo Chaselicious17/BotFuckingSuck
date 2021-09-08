@@ -12,7 +12,7 @@ module.exports = {
         axios.get(`https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${username.toLowerCase()}`)
             .then(function (response) {
                 let highscoreData = mapHighscoreData(response.data);
-                logInfo(highscoreData);
+                console.log(highscoreData);
 
                 let reply = '>>> ';
                 reply += `Showing stats for: **${username}**\n`;
