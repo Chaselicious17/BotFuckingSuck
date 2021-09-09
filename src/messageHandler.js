@@ -15,13 +15,6 @@ module.exports = {
         
         // return if message isn't a command
         if (!hasCommandToken(message.content)) return;
-        
-        console.log(message.author.id);
-        
-        if(message.author.id === '189955666356600832'){ // panker
-            message.reply(`**Oh My Suck!** Sorry, but you sing to much for my functions to work properly. Try not singing for the betterment of the rest of us.`);
-            return;
-        }
 
         if(message.author.id === '162382220785483776' || message.author.id === '794708380320006226'){ // preston (big cock)
             message.reply(`Error: Cock too large`);
