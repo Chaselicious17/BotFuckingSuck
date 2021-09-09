@@ -11,6 +11,11 @@ module.exports = {
         // dont handle bot messages
         if(message.author.bot) return;
 
+        logChat(message);
+        
+        // return if message isn't a command
+        if (!hasCommandToken(message.content)) return;
+        
         if(message.author.id === 189955666356600832){ // panker
             message.reply(`**Oh My Suck!** Sorry, but you sing to much for my functions to work properly. Try not singing for the betterment of the rest of us.`);
             return;
@@ -25,11 +30,6 @@ module.exports = {
             message.reply(`Wanna play Valorant??? <:grog:871892393312530512><:grog:871892393312530512><:grog:871892393312530512>`);
             return;
         }
-        
-        logChat(message);
-        
-        // return if message isn't a command
-        if (!hasCommandToken(message.content)) return;
         
         let command = message.content
             .split(' ', 1)[0] // get first string from command token until first space
