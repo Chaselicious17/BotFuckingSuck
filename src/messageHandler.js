@@ -1,6 +1,7 @@
 const { logBotReady, logChat } = require('./utility/logger.js');
 const constants = require('./utility/constants.js');
-const services = require('./utility/commandServices.js');
+const validCommands = require('./utility/commandServices.js');
+const { getRandomInt } = require('./services/rngService.js');
 
 module.exports = {
     handleReady: function(botName){
@@ -17,12 +18,16 @@ module.exports = {
         if (!hasCommandToken(message.content)) return;
 
         if(message.author.id === '162382220785483776' || message.author.id === '794708380320006226'){ // preston (big cock)
-            message.reply(`Error: Cock too large`);
-            return;
+            let cockError = getRandomInt(1, 5);
+            if(cockError === 3){
+                message.reply(`Error: Cock too large`);
+                return;
+            }            
         }
         
         if(message.author.id === '353698469682216961'){ // grog
-            message.reply(`Wanna play Valorant??? <:grog:871892393312530512><:grog:871892393312530512><:grog:871892393312530512>`);
+            let index = getRandomInt(0, constants.GrogQuotes.length - 1);
+            message.reply(constants.GrogQuotes[index]);
             return;
         }
         
@@ -32,9 +37,9 @@ module.exports = {
             .toLowerCase();   // set to lowercase to avoid case sensitive issues
 
         // check if command is in list of services
-        if (command in services){
+        if (command in validCommands){
             // runs command service
-            services[command](message);
+            validCommands[command](message);
         }
         else {
             message.reply(`**Oh My Suck!** Sorry, but **${command}** is not a command. Try !help for a list of commands`);
@@ -46,7 +51,7 @@ module.exports = {
 function hasCommandToken(messageContent){
     try{
         // If first character is the bot command character
-        if (messageContent.charAt(0) === constants["CommandToken"])
+        if (messageContent.charAt(0) === constants.CommandToken)
             return true;
     }
     catch (exception){
