@@ -24,7 +24,7 @@ module.exports = {
                 reply += `<:Magic_icon:884978564573831209> ${highscoreData.Magic.level}         <:Fletching_icon:884978564594819113> ${highscoreData.Fletching.level}         <:Woodcutting_icon:884978565001658408> ${highscoreData.Woodcutting.level}\n`;
                 reply += `<:Runecraft_icon:884978564892614716> ${highscoreData.Runecrafting.level}         <:Slayer_icon:884978564909371392> ${highscoreData.Slayer.level}         <:Farming_icon:884978565010059335> ${highscoreData.Farming.level}\n`;
                 reply += `<:Construction_icon:884978564968108072> ${highscoreData.Construction.level}         <:Hunter_icon:884978564993265684> ${highscoreData.Hunter.level}       Total: ${highscoreData.Overall.level}\n`;
-                reply += '';//<:Quest_point_icon:884978564515123263>               
+                reply += '';            
 
                 message.channel.send(reply);
             })
@@ -36,11 +36,10 @@ module.exports = {
 };
 
 function mapHighscoreData(hsData){
-
     hsData = hsData.split('\n');
 
     let categoryStats = new Array(hsData.length);
-    for (i = 0; i < hsData.length; i++) {
+    for (i = 0; i < hsData.length - 1; i++) {
         let rankLvlExp = hsData[i].split(',');
 
         categoryStats[categories[i]] = {
@@ -54,7 +53,7 @@ function mapHighscoreData(hsData){
 }
 
 function padLeft(num){
-    if (num <= 9){
+    if (num <= 9 && num >= 0){
         return '0' + num;
     }
     return num;
@@ -73,7 +72,7 @@ const categories =
         'Crazy Archaeologist', 'Dagannoth Prime', 'Dagannoth Rex', 'Dagannoth Supreme',
         'Deranged Archaeologist', 'General Graardor', 'Giant Mole', 'Grotesque Guardians',
         'Hespori', 'Kalphite Queen', 'King Black Dragon', 'Kraken', 'Kree\'Arra',
-        'K\'ril Tsutsaroth', 'Mimic', 'Nightmare', 'Obor', 'Sarachnis', 'Scorpia', 'Skotizo',
-        'Tempoross', 'The Gauntlet', ' The Corrupted Gauntlet', 'Theatre of Blood',
+        'K\'ril Tsutsaroth', 'Mimic', 'Nightmare', 'Obor', 'Placeholder', 'Sarachnis', 'Scorpia', 'Skotizo',
+        'Tempoross', 'The Gauntlet', 'The Corrupted Gauntlet', 'Theatre of Blood',
         'Theatre of Blood: Hard Mode', 'Thermonuclear Smoke Devil', 'TzKal-Zuk',
         'TzTok-Jad', 'Venenatis', 'Vet\'ion', 'Vorkath', 'Wintertodt', 'Zalcano', 'Zulrah'];
