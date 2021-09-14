@@ -1,22 +1,26 @@
 // Needed environment variables:
-// TOKEN - The bot token from Discord
+// TOKEN - The bot token
+// TESTBOTTOKEN - The test-bot token
 // PORT - The port number to listen
-
 
 require('dotenv').config();
 const Discord = require('discord.js');
 const { handleReady, handleChat } = require('./messageHandler.js');
-const TOKEN = process.env.NODE_ENV === 'production' ? process.env.TOKEN : process.env.TESTBOTTOKEN;
+const TOKEN = process.env.NODE_ENV !== 'production' ? process.env.TESTBOTTOKEN : process.env.TOKEN;
 
 // init bot client
 const bot = new Discord.Client();
 
 // listener events
 bot.on('ready', () => { 
-    handleReady(bot.user.tag);
+  handleReady(bot.user.tag);
+  bot.user.setActivity(" !help", {
+    type: "LISTENING",
+    url: "https://bot-guy.herokuapp.com/"
+  });
 });
 bot.on('message', (message) => {
-    handleChat(message);
+  handleChat(message);
 });
 
 bot.login(TOKEN);
