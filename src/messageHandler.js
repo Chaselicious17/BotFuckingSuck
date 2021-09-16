@@ -23,13 +23,7 @@ module.exports = {
                 message.reply(`Error: Cock too large`);
                 return;
             }            
-        }
-        
-        if(message.author.id === '353698469682216961'){ // grog
-            let index = getRandomInt(0, constants.GrogQuotes.length - 1);
-            message.reply(constants.GrogQuotes[index]);
-            return;
-        }
+        }        
         
         let command = message.content
             .split(' ', 1)[0] // get first string from command token until first space
