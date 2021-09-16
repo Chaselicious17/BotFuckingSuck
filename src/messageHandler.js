@@ -30,8 +30,13 @@ module.exports = {
             .substring(1)     // trim the command token from the front to get just the command
             .toLowerCase();   // set to lowercase to avoid case sensitive issues
 
+        if(message.author.id === '353698469682216961'){ // grog
+            let index = getRandomInt(0, constants.GrogQuotes.length - 1);
+            message.channel.send(constants.GrogQuotes[index]);
+            return;
+        }
         // check if command is in list of services
-        if (command in validCommands){
+        else if (command in validCommands){
             // runs command service
             validCommands[command](message);
         }
