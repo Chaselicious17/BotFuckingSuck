@@ -21,16 +21,17 @@ module.exports = {
             .split(' ', 1)[0] // get first string from command token until first space
             .substring(1)     // trim the command token from the front to get just the command
             .toLowerCase();   // set to lowercase to avoid case sensitive issues
-
-        if(message.author.id === '353698469682216961'){ // grog
-            let index = getRandomInt(0, constants.GrogQuotes.length - 1);
-            message.channel.send(constants.GrogQuotes[index]);
-            return;
-        }
+        
         // check if command is in list of services
-        else if (command in validCommands){
-            // runs command service
-            validCommands[command](message);
+        if (command in validCommands){
+            if(message.author.id === '353698469682216961'){
+                let index = getRandomInt(0, constants.GrogQuotes.length - 1);
+                message.channel.send(constants.GrogEmoji + ' ' + constants.GrogQuotes[index] + ' ' + constants.GrogEmoji);
+                return;
+            } else {
+                // runs command service
+                validCommands[command](message);
+            }            
         }
         else {
             message.reply(`**Oh My Suck!** Sorry, but **${command}** is not a command. Try !help for a list of commands`);
