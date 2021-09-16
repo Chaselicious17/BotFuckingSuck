@@ -16,14 +16,6 @@ module.exports = {
         
         // return if message isn't a command
         if (!hasCommandToken(message.content)) return;
-
-        if(message.author.id === '162382220785483776' || message.author.id === '794708380320006226'){ // preston (big cock)
-            let cockError = getRandomInt(1, 5);
-            if(cockError === 3){
-                message.reply(`Error: Cock too large`);
-                return;
-            }            
-        }        
         
         let command = message.content
             .split(' ', 1)[0] // get first string from command token until first space
