@@ -34,7 +34,7 @@ module.exports = {
             }            
         }
         else {
-            message.reply(`**Oh My Suck!** Sorry, but **${command}** is not a command. Try !help for a list of commands`);
+            //message.reply(`**Oh My Suck!** Sorry, but **${command}** is not a command. Try !help for a list of commands`);
         }
     }
 }
