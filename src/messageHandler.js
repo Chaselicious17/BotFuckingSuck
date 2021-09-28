@@ -1,7 +1,6 @@
 const { logBotReady, logChat } = require('./utility/logger.js');
 const constants = require('./utility/constants.js');
 const validCommands = require('./utility/commandServices.js');
-const { getRandomInt } = require('./services/rngService.js');
 
 module.exports = {
     handleReady: function(botName){
@@ -24,17 +23,8 @@ module.exports = {
         
         // check if command is in list of services
         if (command in validCommands){
-            if(message.author.id === '353698469682216961'){
-                let index = getRandomInt(0, constants.GrogQuotes.length - 1);
-                message.channel.send(constants.GrogEmoji + ' ' + constants.GrogQuotes[index] + ' ' + constants.GrogEmoji);
-                return;
-            } else {
-                // runs command service
-                validCommands[command](message);
-            }            
-        }
-        else {
-            //message.reply(`**Oh My Suck!** Sorry, but **${command}** is not a command. Try !help for a list of commands`);
+            // runs command service
+            validCommands[command](message);          
         }
     }
 }
