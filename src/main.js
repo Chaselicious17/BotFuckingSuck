@@ -3,10 +3,15 @@
 // TESTBOTTOKEN - The test-bot token
 // PORT - The port number to listen
 
-require('dotenv').config();
 const Discord = require('discord.js');
+const express = require('express');
+const path = require('path');
 const { handleReady, handleChat } = require('./messageHandler.js');
+
+// load config values
+require('dotenv').config();
 const TOKEN = process.env.NODE_ENV !== 'production' ? process.env.TESTBOTTOKEN : process.env.TOKEN;
+const PORT = process.env.PORT || 9000;
 
 // init bot client
 const bot = new Discord.Client();
@@ -23,13 +28,23 @@ bot.on('message', (message) => {
   handleChat(message);
 });
 
+
 bot.login(TOKEN);
 
-// Need web listener for heroku server to work
-var http = require('http');
-http.createServer(function (req, res){
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write('<h1>Hello!</h1>' + 
-    '<p>' + 'This website is used to host the discord bot instance: ' + bot.user.tag + '</p>');
-  res.end();
-}).listen(process.env.PORT || 9000);
+// Setup web listener
+const app = express();
+
+// Favicon
+app.get("/favicon.ico", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
+});
+
+// Landing Page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/index.html"));
+});
+
+// Web Listener
+app.listen(PORT, () => {
+  console.log("Listening on port " + PORT);
+});
