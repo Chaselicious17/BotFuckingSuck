@@ -9,7 +9,7 @@ module.exports = {
     'status': function (message) { sendHealthCheck(message) },
     'joke': function (message) { sendJoke(message) },
     'food': function (message) { sendDinner(message) },
-    'osrsstats': function (message) { sendStats(message) },
+    'osrs': function (message) { sendStats(message) },
     'roll': function (message) { sendRandom(message) },
     'help': function (message) { sendHelp(message) }
 };

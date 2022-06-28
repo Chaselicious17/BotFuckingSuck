@@ -34,10 +34,9 @@ bot.login(TOKEN);
 // Setup web listener
 const app = express();
 
-// Favicon
-app.get("/favicon.ico", (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
-});
+// setup static files
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // Landing Page
 app.get("/", (req, res) => {

@@ -17,6 +17,8 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "node-fetch": "^3.0.0",
+    "osrs-gim-hiscores": "^1.0.1",
+    "osrs-json-hiscores": "^2.8.0",
     "path": "^0.12.7",
     "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
